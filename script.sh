@@ -1,5 +1,6 @@
 #!/bin/bash
 set -e
+set -u
 
 path=/var/log/scriptlog
 filename=script.log
