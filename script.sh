@@ -1,16 +1,17 @@
 #!/bin/bash
+set -e
 
 path=/var/log/scriptlog
-filname=script.log
+filename=script.log
 x=1
 
 mkdir -p $path
 [[ -f $filename ]] || touch $path/$filename
 [[ -d $filename ]] || chmod a+x $path/$filename
 
-while [ $x -lt 2 ]
+while [ $x -lt $1 ]
 do
 echo 'Hello World' >> $path/$filename
 x=$(($x-1))
-sleep 30
+sleep $2
 done
