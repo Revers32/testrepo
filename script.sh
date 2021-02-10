@@ -6,16 +6,16 @@ path=/var/log/scriptlog
 filename=script.log
 x=1
 
+
 mkdir -p $path
 [[ -f $filename ]] || touch $path/$filename
 [[ -d $filename ]] || chmod a+x $path/$filename
 
 while true; do
 case $x in
-	1)echo -n "Enter number of iterration " && read numberOfIterration;;
-	2)echo -n "Enter sleep time " && read sleepTime;;
-	3)echo -n "Enter text " && read text;;
-	*)echo $text >> $path/$filename && sleep $sleepTime && if (($x >$numberOfIterration+2));then echo "done" && break; fi ;;
+	1)sleepTime=$1;;
+	2)text=$2;;
+	*)echo $text >> $path/$filename && sleep $sleepTime;;
 esac
 x=$(($x+1))
 done
