@@ -6,10 +6,9 @@ path=/var/log/scriptlog
 filename=script.log
 
 mkdir -p $path
-[[ -f $filename ]] || touch $path/$filename
-[[ -f $filename ]] || chmod a+x $path/$filename
+[[ -f $filename ]] || touch $path/$filename && chmod a+x $path/$filename
 
-while [ -n "${1:-}" ]
+while [[ -n "${1:-}" ]]
 do
 case "$1" in
 	-s | --sleeptime) sleep="$2"
@@ -17,7 +16,7 @@ case "$1" in
 	-t | --text) text="$2"
 	shift;;
 	*) echo "( $1 ) Option not found"
-	exit;; 
+	exit 1;; 
 esac
 shift
 done
