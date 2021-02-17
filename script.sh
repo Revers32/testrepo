@@ -7,18 +7,21 @@ filename=script.log
 
 mkdir -p $path
 [[ -f $filename ]] || touch $path/$filename
-[[ -d $filename ]] || chmod a+x $path/$filename
+[[ -f $filename ]] || chmod a+x $path/$filename
 
-while true;do
-case $1 in
-	-s | --sleeptime)
-	sleep="$2"
-	shift
+while [ -n "${1:-}" ]
+do
+case "$1" in
+	-s | --sleeptime) sleep="$2"
 	shift;;
-	-t | --text)
-	text="$2"
-	shift
+	-t | --text) text="$2"
 	shift;;
-	-r | --run )echo $text >> $path/$filename && sleep $sleep;;
+	*) echo "( $1 ) Option not found"
+	exit;; 
 esac
+shift
+done
+
+while true; do
+echo $text >> $path/$filename && sleep $sleep
 done
