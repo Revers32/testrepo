@@ -16,6 +16,6 @@ shift
 done
 
 while true; do
-exec > >(tee >(logger  -p local0.notice "$text" ))
+logger  -p local0.notice "$text"
 sleep $sleep
 done
