@@ -1,0 +1,16 @@
+version: '2'
+services:
+   rsyslog:
+       image: fabriziogaliano/docker-rsyslog
+
+       container_name: rsyslog-incoming
+
+       volumes:
+          - "./etc/rsyslog.conf:/etc/rsyslog.conf"
+          - "./rsyslog.d:/etc/rsyslog.d"
+          - "./logs:/var/log"
+
+       ports:
+          - "514:514"
+
+       restart: always

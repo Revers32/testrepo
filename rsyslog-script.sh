@@ -2,6 +2,12 @@
 set -o errexit
 set -o nounset
 
+path=/var/log
+filename=script.log
+
+mkdir -p $path
+[[ -f $filename ]] || touch $path/$filename && chmod a+x $path/$filename
+
 while [[ -n "${1:-}" ]]
 do
 case "$1" in
