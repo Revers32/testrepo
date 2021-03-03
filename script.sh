@@ -1,16 +1,26 @@
 #!/bin/bash
+set -o errexit
+set -o nounset
 
 path=/var/log/scriptlog
-filname=script.log
-x=1
+filename=script.log
 
 mkdir -p $path
-[[ -f $filename ]] || touch $path/$filename
-[[ -d $filename ]] || chmod a+x $path/$filename
+[[ -f $filename ]] || touch $path/$filename && chmod a+x $path/$filename
 
-while [ $x -lt 2 ]
+while [[ -n "${1:-}" ]]
 do
-echo 'Hello World' >> $path/$filename
-x=$(($x-1))
-sleep 30
+case "$1" in
+	-s | --sleeptime) sleep="$2"
+	shift;;
+	-t | --text) text="$2"
+	shift;;
+	*) echo "( $1 ) Option not found"
+	exit 1;; 
+esac
+shift
+done
+
+while true; do
+echo $text >> $path/$filename && sleep $sleep
 done
