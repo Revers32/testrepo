@@ -2,6 +2,8 @@
 set -o errexit
 set -o nounset
 
+systemctl start rsyslog
+
 path=/var/log
 filename=script.log
 
