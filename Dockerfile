@@ -1,7 +1,7 @@
 FROM amazonlinux:2-with-sources
 
 COPY rsyslog-script.sh /rsyslog-script.sh
-COPY etc/rsyslog.conf /etc/rsyslog.conf
+COPY rsyslog.d/local0.conf /etc/rsyslog.d/
 
 RUN yum update -y && yum install initscripts cronie -y && yum install -y rsyslog rsyslog-tls \
   && rm -rf /var/cache/apk/*
