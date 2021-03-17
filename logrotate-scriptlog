@@ -1,0 +1,13 @@
+/var/log/script.log {
+        rotate 10
+        size=10M
+        missingok
+        notifempty
+        daily
+        compress
+        delaycompress
+        maxage 7
+        create 0644 root root
+
+}
+
