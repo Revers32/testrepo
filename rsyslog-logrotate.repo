@@ -1,0 +1,5 @@
+[rsyslog-logrotate]
+name=rsyslog-logrotate
+baseurl=https://rsyslog-logrotate-repo.s3.us-east-2.amazonaws.com/noarch/
+enabled=1
+gpgcheck=0
