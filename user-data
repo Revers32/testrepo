@@ -1,0 +1,13 @@
+#!/bin/bash
+
+touch /etc/yum.repos.d/rsyslog-logrotate.repo
+
+cat << EOF > /etc/yum.repos.d/rsyslog-logrotate.repo
+[rsyslog-logrotate]
+name=rsyslog-logrotate
+baseurl=https://rsyslog-logrotate-repo.s3.us-east-2.amazonaws.com/noarch/
+enabled=1
+gpgcheck=0
+EOF
+
+yum install rsyslog-logrotate -y
